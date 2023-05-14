@@ -17,6 +17,8 @@ import dj_database_url
 if os.path.exists('env.py'):
     import env
 
+development = os.environ.get('DEVELOPMENT', False)
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -29,7 +31,7 @@ SECRET_KEY = os.environ.get(
     'SECRET_KEY', 'django-insecure-tnbjtznc2jo#!s$c&830@j)@cc0$jlh-k^x1wf8w+8p_)1!xmq')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = development
 
 if development:
     ALLOWED_HOSTS = ['localhost']
@@ -82,13 +84,6 @@ WSGI_APPLICATION = 'Django_todo.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-# DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-# }
 
 if development:
     DATABASES = {
